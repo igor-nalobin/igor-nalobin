@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Nalobin Igor
+  version: 1.0.0
+  description: |
+    ## API CV
+
+servers:
+  - url: https://ВАШ_НИК.github.io/имя-репозитория
+
+paths:
+  /about:
+    get:
+      summary: Common
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example: |
+                {
+                  "name": "Igor Nalobin",
+                  "profession": "System analyst",
+                  "email": "i.v.nalobin@gmail.com"
+                }
+
+  /skills:
+    get:
+      summary: Skills
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example: ["Figma", "Photoshop", "UI/UX Design"]
+
+  /experience:
+    get:
+      summary: Experience
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example: |
+                [{
+                  "company": "Компания А",
+                  "position": "Дизайнер",
+                  "period": "2020-2023"
+                }]
