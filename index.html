@@ -11,10 +11,18 @@
     <script>
         window.onload = function() {
             SwaggerUIBundle({
-                url: "./openapi.yaml", // Путь к вашей спецификации
+                url: "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/openapi.yaml",
                 dom_id: '#swagger-ui',
                 presets: [SwaggerUIBundle.presets.apis],
-                layout: "BaseLayout"
+                layout: "BaseLayout",
+                requestInterceptor: (req) => {
+                    // Фикс для CORS
+                    if (req.url.includes('raw.githubusercontent.com')) {
+                        req.headers.Origin = '';
+                        req.headers.Referer = '';
+                    }
+                    return req;
+                }
             });
         }
     </script>
