@@ -16,11 +16,6 @@ paths:
         '200':
           description: OK
           content:
-                [{
-                  "ccompany": "company name",
-                  "cposition": "System analyst",
-                  "cperiod": "2020-now"
-                }]
             application/json:
               example: 
                 $ref: "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/data/about.json"
