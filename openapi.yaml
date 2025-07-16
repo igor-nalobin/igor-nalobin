@@ -6,7 +6,7 @@ info:
     ## API CV
 
 servers:
-  - url: https://ВАШ_НИК.github.io/имя-репозитория
+  - url: https://igor-nalobin.github.io/igor-nalobin
 
 paths:
   /about:
@@ -32,7 +32,7 @@ paths:
           description: OK
           content:
             application/json:
-              example: ["Figma", "Photoshop", "UI/UX Design"]
+              example: ["SOAP", "XML", "SQL"]
 
   /experience:
     get:
@@ -44,7 +44,7 @@ paths:
             application/json:
               example: |
                 [{
-                  "company": "Компания А",
-                  "position": "Дизайнер",
-                  "period": "2020-2023"
+                  "company": "company name",
+                  "position": "System analyst",
+                  "period": "2020-now"
                 }]
