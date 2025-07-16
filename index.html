@@ -1,28 +1,191 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>API CV</title>
+    <title>Резюме Игоря Налобина</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui.min.css">
+    <style>
+        body { margin: 0; padding: 20px; background: #fafafa; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #333; }
+    </style>
 </head>
 <body>
-    <div id="swagger-ui"></div>
+    <div class="header">
+        <h1>Резюме Игоря Налобина в формате API</h1>
+        <p>Пиар-менеджер, Санкт-Петербург</p>
+    </div>
     
+    <div id="swagger-ui"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui-standalone-preset.min.js"></script>
     <script>
         window.onload = function() {
-            SwaggerUIBundle({
-                url: "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/openapi.yaml",
-                dom_id: '#swagger-ui',
-                presets: [SwaggerUIBundle.presets.apis],
-                layout: "BaseLayout",
-                requestInterceptor: (req) => {
-                    // Фикс для CORS
-                    if (req.url.includes('raw.githubusercontent.com')) {
-                        req.headers.Origin = '';
-                        req.headers.Referer = '';
+            // Встроенная спецификация прямо в HTML
+            const spec = {
+                "openapi": "3.0.0",
+                "info": {
+                    "title": "Резюме Игоря Налобина",
+                    "version": "1.0.0",
+                    "description": "API с информацией о профессиональных навыках и опыте работы"
+                },
+                "paths": {
+                    "/about": {
+                        "get": {
+                            "summary": "Основная информация",
+                            "responses": {
+                                "200": {
+                                    "description": "Успешный ответ",
+                                    "content": {
+                                        "application/json": {
+                                            "example": {
+                                                "name": "Игорь Налобин",
+                                                "profession": "Пиар-менеджер",
+                                                "email": "nalobin.igor@gmail.com",
+                                                "location": "Санкт-Петербург"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "/skills": {
+                        "get": {
+                            "summary": "Профессиональные навыки",
+                            "responses": {
+                                "200": {
+                                    "description": "Успешный ответ",
+                                    "content": {
+                                        "application/json": {
+                                            "example": [
+                                                "Продвижение в социальных сетях",
+                                                "Копирайтинг",
+                                                "Организация мероприятий"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "/experience": {
+                        "get": {
+                            "summary": "Опыт работы",
+                            "responses": {
+                                "200": {
+                                    "description": "Успешный ответ",
+                                    "content": {
+                                        "application/json": {
+                                            "example": [
+                                                {
+                                                    "company": "Пиццерия «Пицца-н-ролл»",
+                                                    "position": "Пиар-менеджер",
+                                                    "period": "2020 — настоящее время",
+                                                    "description": "Повысил узнаваемость бренда на 15% за год. Организовал 20 мероприятий, которые привлекли более 1000 гостей. Увеличил вовлеченность в соцсетях в 3 раза."
+                                                },
+                                                {
+                                                    "company": "Комитет по туризму Ленинградской области",
+                                                    "position": "Специалист по связям с общественностью",
+                                                    "period": "2018 — 2020",
+                                                    "description": "Провел 3 пресс-тура для 50 журналистов. Организовал участие Комитета в 5 выставках. Разработал и запустил 3 рекламных кампании."
+                                                },
+                                                {
+                                                    "company": "Газета «Санкт-Петербургские ведомости»",
+                                                    "position": "Журналист",
+                                                    "period": "2015 — 2018",
+                                                    "description": "Писал статьи на тему культуры и искусства. Провел 50 интервью с деятелями культуры. Участвовал в создании спецпроектов."
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "/education": {
+                        "get": {
+                            "summary": "Образование",
+                            "responses": {
+                                "200": {
+                                    "description": "Успешный ответ",
+                                    "content": {
+                                        "application/json": {
+                                            "example": [
+                                                {
+                                                    "university": "Санкт-Петербургский государственный университет",
+                                                    "faculty": "Журналистики",
+                                                    "degree": "Бакалавр",
+                                                    "period": "2011 — 2015"
+                                                },
+                                                {
+                                                    "university": "Санкт-Петербургский государственный университет",
+                                                    "faculty": "Журналистики",
+                                                    "degree": "Магистр",
+                                                    "period": "2015 — 2017"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "/languages": {
+                        "get": {
+                            "summary": "Языки",
+                            "responses": {
+                                "200": {
+                                    "description": "Успешный ответ",
+                                    "content": {
+                                        "application/json": {
+                                            "example": [
+                                                {"language": "Английский", "level": "С1"},
+                                                {"language": "Французский", "level": "B1"}
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "/projects": {
+                        "get": {
+                            "summary": "Проекты",
+                            "responses": {
+                                "200": {
+                                    "description": "Успешный ответ",
+                                    "content": {
+                                        "application/json": {
+                                            "example": [
+                                                {
+                                                    "name": "Гастрономический фестиваль «Вкус Ленинградской области»",
+                                                    "description": "Организовал фестиваль для 5000 гостей. Привлек 20 ресторанов и 10 фермеров."
+                                                },
+                                                {
+                                                    "name": "Книга «Путеводитель по Ленинградской области»",
+                                                    "description": "Написал и издал тиражом 5000 экземпляров."
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    return req;
                 }
+            };
+
+            // Инициализация Swagger UI со встроенной спецификацией
+            SwaggerUIBundle({
+                spec: spec,
+                dom_id: '#swagger-ui',
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                layout: "StandaloneLayout",
+                supportedSubmitMethods: [] // Отключаем кнопки Execute
             });
         }
     </script>
