@@ -7,12 +7,13 @@
         body { margin: 0; padding: 20px; background: #fafafa; }
         .header { text-align: center; margin-bottom: 30px; }
         .header h1 { color: #333; }
+        .swagger-ui .opblock-summary-path { max-width: 600px; }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Резюме Игоря Налобина в формате API</h1>
-        <p>Пиар-менеджер, Санкт-Петербург</p>
+        <p>Пиар-менеджер, Санкт-Петербург | <a href="https://t.me/nalobin_igor" target="_blank">@nalobin_igor</a></p>
     </div>
     
     <div id="swagger-ui"></div>
@@ -21,28 +22,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui-standalone-preset.min.js"></script>
     <script>
         window.onload = function() {
-            // Встроенная спецификация прямо в HTML
+            // Конфигурация спецификации
             const spec = {
                 "openapi": "3.0.0",
                 "info": {
-                    "title": "Резюме Игоря Налобина",
+                    "title": "Резюме API",
                     "version": "1.0.0",
-                    "description": "API с информацией о профессиональных навыках и опыте работы"
+                    "description": "API с профессиональной информацией Игоря Налобина"
                 },
+                "servers": [
+                    {
+                        "url": "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/data",
+                        "description": "Основной сервер с данными резюме"
+                    }
+                ],
                 "paths": {
-                    "/about": {
+                    "/about.json": {
                         "get": {
                             "summary": "Основная информация",
+                            "description": "Получить личную и контактную информацию",
                             "responses": {
                                 "200": {
                                     "description": "Успешный ответ",
                                     "content": {
                                         "application/json": {
-                                            "example": {
-                                                "name": "Игорь Налобин",
-                                                "profession": "Пиар-менеджер",
-                                                "email": "nalobin.igor@gmail.com",
-                                                "location": "Санкт-Петербург"
+                                            "schema": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {"type": "string", "example": "Игорь Налобин"},
+                                                    "profession": {"type": "string", "example": "Пиар-менеджер"},
+                                                    "email": {"type": "string", "example": "nalobin.igor@gmail.com"},
+                                                    "location": {"type": "string", "example": "Санкт-Петербург"}
+                                                }
                                             }
                                         }
                                     }
@@ -50,60 +61,58 @@
                             }
                         }
                     },
-                    "/skills": {
+                    "/skills.json": {
                         "get": {
                             "summary": "Профессиональные навыки",
+                            "description": "Получить список профессиональных навыков",
                             "responses": {
                                 "200": {
                                     "description": "Успешный ответ",
                                     "content": {
                                         "application/json": {
-                                            "example": [
-                                                "Продвижение в социальных сетях",
-                                                "Копирайтинг",
-                                                "Организация мероприятий"
-                                            ]
+                                            "schema": {
+                                                "type": "array",
+                                                "items": {"type": "string"},
+                                                "example": [
+                                                    "Продвижение в социальных сетях",
+                                                    "Копирайтинг",
+                                                    "Организация мероприятий"
+                                                ]
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "/experience": {
+                    "/experience.json": {
                         "get": {
                             "summary": "Опыт работы",
+                            "description": "Получить историю профессионального опыта",
                             "responses": {
                                 "200": {
                                     "description": "Успешный ответ",
                                     "content": {
                                         "application/json": {
-                                            "example": [
-                                                {
-                                                    "company": "Пиццерия «Пицца-н-ролл»",
-                                                    "position": "Пиар-менеджер",
-                                                    "period": "2020 — настоящее время",
-                                                    "description": "Повысил узнаваемость бренда на 15% за год. Организовал 20 мероприятий, которые привлекли более 1000 гостей. Увеличил вовлеченность в соцсетях в 3 раза."
-                                                },
-                                                {
-                                                    "company": "Комитет по туризму Ленинградской области",
-                                                    "position": "Специалист по связям с общественностью",
-                                                    "period": "2018 — 2020",
-                                                    "description": "Провел 3 пресс-тура для 50 журналистов. Организовал участие Комитета в 5 выставках. Разработал и запустил 3 рекламных кампании."
-                                                },
-                                                {
-                                                    "company": "Газета «Санкт-Петербургские ведомости»",
-                                                    "position": "Журналист",
-                                                    "period": "2015 — 2018",
-                                                    "description": "Писал статьи на тему культуры и искусства. Провел 50 интервью с деятелями культуры. Участвовал в создании спецпроектов."
+                                            "schema": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "company": {"type": "string"},
+                                                        "position": {"type": "string"},
+                                                        "period": {"type": "string"},
+                                                        "description": {"type": "string"}
+                                                    }
                                                 }
-                                            ]
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "/education": {
+                    "/education.json": {
                         "get": {
                             "summary": "Образование",
                             "responses": {
@@ -111,27 +120,25 @@
                                     "description": "Успешный ответ",
                                     "content": {
                                         "application/json": {
-                                            "example": [
-                                                {
-                                                    "university": "Санкт-Петербургский государственный университет",
-                                                    "faculty": "Журналистики",
-                                                    "degree": "Бакалавр",
-                                                    "period": "2011 — 2015"
-                                                },
-                                                {
-                                                    "university": "Санкт-Петербургский государственный университет",
-                                                    "faculty": "Журналистики",
-                                                    "degree": "Магистр",
-                                                    "period": "2015 — 2017"
+                                            "schema": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "university": {"type": "string"},
+                                                        "faculty": {"type": "string"},
+                                                        "degree": {"type": "string"},
+                                                        "period": {"type": "string"}
+                                                    }
                                                 }
-                                            ]
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "/languages": {
+                    "/languages.json": {
                         "get": {
                             "summary": "Языки",
                             "responses": {
@@ -139,34 +146,16 @@
                                     "description": "Успешный ответ",
                                     "content": {
                                         "application/json": {
-                                            "example": [
-                                                {"language": "Английский", "level": "С1"},
-                                                {"language": "Французский", "level": "B1"}
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "/projects": {
-                        "get": {
-                            "summary": "Проекты",
-                            "responses": {
-                                "200": {
-                                    "description": "Успешный ответ",
-                                    "content": {
-                                        "application/json": {
-                                            "example": [
-                                                {
-                                                    "name": "Гастрономический фестиваль «Вкус Ленинградской области»",
-                                                    "description": "Организовал фестиваль для 5000 гостей. Привлек 20 ресторанов и 10 фермеров."
-                                                },
-                                                {
-                                                    "name": "Книга «Путеводитель по Ленинградской области»",
-                                                    "description": "Написал и издал тиражом 5000 экземпляров."
+                                            "schema": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "language": {"type": "string"},
+                                                        "level": {"type": "string"}
+                                                    }
                                                 }
-                                            ]
+                                            }
                                         }
                                     }
                                 }
@@ -176,8 +165,8 @@
                 }
             };
 
-            // Инициализация Swagger UI со встроенной спецификацией
-            SwaggerUIBundle({
+            // Инициализация Swagger UI
+            const ui = SwaggerUIBundle({
                 spec: spec,
                 dom_id: '#swagger-ui',
                 presets: [
@@ -185,7 +174,30 @@
                     SwaggerUIStandalonePreset
                 ],
                 layout: "StandaloneLayout",
-                supportedSubmitMethods: [] // Отключаем кнопки Execute
+                requestInterceptor: (request) => {
+                    // Добавляем заголовки для обхода CORS
+                    request.headers.Origin = window.location.origin;
+                    request.headers.Referer = window.location.href;
+                    
+                    // Добавляем параметр для избежания кэширования
+                    if (request.url.includes('raw.githubusercontent.com')) {
+                        const separator = request.url.includes('?') ? '&' : '?';
+                        request.url += `${separator}nocache=${Date.now()}`;
+                    }
+                    
+                    return request;
+                },
+                responseInterceptor: (response) => {
+                    // Убедимся, что ответ обрабатывается как JSON
+                    if (response.url.includes('.json') && typeof response.body === 'string') {
+                        try {
+                            response.body = JSON.parse(response.body);
+                        } catch (e) {
+                            console.error('Error parsing JSON response', e);
+                        }
+                    }
+                    return response;
+                }
             });
         }
     </script>
