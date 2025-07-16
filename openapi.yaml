@@ -17,12 +17,8 @@ paths:
           description: OK
           content:
             application/json:
-              example: |
-                {
-                  "name": "Igor Nalobin",
-                  "profession": "System analyst",
-                  "email": "i.v.nalobin@gmail.com"
-                }
+              example: 
+                $ref: "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/data/about.json"
 
   /skills:
     get:
@@ -32,7 +28,8 @@ paths:
           description: OK
           content:
             application/json:
-              example: ["SOAP", "XML", "SQL"]
+              example: 
+                $ref: "./data/skills.json"
 
   /experience:
     get:
@@ -42,7 +39,7 @@ paths:
           description: OK
           content:
             application/json:
-              example: |
+              example: 
                 [{
                   "company": "company name",
                   "position": "System analyst",
