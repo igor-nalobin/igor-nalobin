@@ -22,11 +22,6 @@ paths:
                   "cperiod": "2020-now"
                 }]
             application/json:
-                [{
-                  "acompany": "company name",
-                  "aposition": "System analyst",
-                  "aperiod": "2020-now"
-                }]
               example: 
                 $ref: "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/data/about.json"
 
