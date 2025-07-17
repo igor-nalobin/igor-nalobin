@@ -37,7 +37,7 @@
                     }
                 ],
                 "paths": {
-                    "/about": {
+                    "/about.json": {
                         "get": {
                             "summary": "Main information",
                             "description": "Get personal and contact information",
@@ -99,10 +99,10 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "company": {"type": "Daily Planet"},
-                                                        "position": {"type": "Journalist"},
-                                                        "period": {"type": "Late 20s–now"},
-                                                        "description": {"type": "Wears glasses, writes arcticles, saves the world"}
+                                                        "company": {"string": "Daily Planet"},
+                                                        "position": {"string": "Journalist"},
+                                                        "period": {"string": "Late 20s–now"},
+                                                        "description": {"string": "Wears glasses, writes arcticles, saves the world"}
                                                     }
                                                 }
                                             }
@@ -126,10 +126,10 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "university": {"type": "Kryptonopolis University"},
-                                                        "faculty": {"type": "How to be a Superman"},
-                                                        "degree": {"type": "Master's degree"},
-                                                        "period": {"type": "Unknown"}
+                                                        "university": {"string": "Kryptonopolis University"},
+                                                        "faculty": {"string": "How to be a Superman"},
+                                                        "degree": {"string": "Master's degree"},
+                                                        "period": {"string": "Unknown"}
                                                     }
                                                 }
                                             }
@@ -141,10 +141,10 @@
                     },
                     "/languages.json": {
                         "get": {
-                            "summary": "Языки",
+                            "summary": "Languages",
                             "responses": {
                                 "200": {
-                                    "description": "Успешный ответ",
+                                    "description": "Ok",
                                     "content": {
                                         "application/json": {
                                             "schema": {
@@ -152,8 +152,8 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "language": {"type": "Kryptonian"},
-                                                        "level": {"type": "Native speaker"}
+                                                        "language": {"string": "Kryptonian"},
+                                                        "level": {"string": "Native speaker"}
                                                     }
                                                 }
                                             }
