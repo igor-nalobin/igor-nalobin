@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Резюме Игоря Налобина</title>
+    <title>Igor Nalobin, System analyst</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui.min.css">
     <style>
         body { margin: 0; padding: 20px; background: #fafafa; }
@@ -12,8 +12,8 @@
 </head>
 <body>
     <div class="header">
-        <h1>Резюме Игоря Налобина в формате API</h1>
-        <p>Пиар-менеджер, Санкт-Петербург | <a href="https://t.me/nalobin_igor" target="_blank">@nalobin_igor</a></p>
+        <h1>API CV</h1>
+        <p>System analyst, Tyumen | <a href="https://t.me/IngVarrr" target="_blank">@https://t.me/IngVarrr</a></p>
     </div>
     
     <div id="swagger-ui"></div>
@@ -26,33 +26,33 @@
             const spec = {
                 "openapi": "3.0.0",
                 "info": {
-                    "title": "Резюме API",
-                    "version": "1.0.0",
-                    "description": "API с профессиональной информацией Игоря Налобина"
+                    "title": "API CV",
+                    "version": "1.0.3",
+                    "description": "API with professional information"
                 },
                 "servers": [
                     {
                         "url": "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/data",
-                        "description": "Основной сервер с данными резюме"
+                        "description": "main server"
                     }
                 ],
                 "paths": {
                     "/about.json": {
                         "get": {
-                            "summary": "Основная информация",
-                            "description": "Получить личную и контактную информацию",
+                            "summary": "Main information",
+                            "description": "Get personal and contact information",
                             "responses": {
                                 "200": {
-                                    "description": "Успешный ответ",
+                                    "description": "Ok",
                                     "content": {
                                         "application/json": {
                                             "schema": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "name": {"type": "string", "example": "Игорь Налобин"},
-                                                    "profession": {"type": "string", "example": "Пиар-менеджер"},
-                                                    "email": {"type": "string", "example": "nalobin.igor@gmail.com"},
-                                                    "location": {"type": "string", "example": "Санкт-Петербург"}
+                                                    "name": {"type": "string", "example": "Clark Kent"},
+                                                    "profession": {"type": "string", "example": "Journalist"},
+                                                    "email": {"type": "string", "example": "sups@krypt.on"},
+                                                    "location": {"type": "string", "example": "Metropolis"}
                                                 }
                                             }
                                         }
@@ -63,20 +63,20 @@
                     },
                     "/skills.json": {
                         "get": {
-                            "summary": "Профессиональные навыки",
-                            "description": "Получить список профессиональных навыков",
+                            "summary": "Professional skills",
+                            "description": "Get a list of professional skills",
                             "responses": {
                                 "200": {
-                                    "description": "Успешный ответ",
+                                    "description": "Ok",
                                     "content": {
                                         "application/json": {
                                             "schema": {
                                                 "type": "array",
                                                 "items": {"type": "string"},
                                                 "example": [
-                                                    "Продвижение в социальных сетях",
-                                                    "Копирайтинг",
-                                                    "Организация мероприятий"
+                                                    "Flight",
+                                                    "X-ray vision",
+                                                    "Superhuman strength"
                                                 ]
                                             }
                                         }
@@ -87,11 +87,11 @@
                     },
                     "/experience.json": {
                         "get": {
-                            "summary": "Опыт работы",
-                            "description": "Получить историю профессионального опыта",
+                            "summary": "Experience",
+                            "description": "Get experience",
                             "responses": {
                                 "200": {
-                                    "description": "Успешный ответ",
+                                    "description": "Ok",
                                     "content": {
                                         "application/json": {
                                             "schema": {
@@ -99,10 +99,10 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "company": {"type": "string"},
-                                                        "position": {"type": "string"},
-                                                        "period": {"type": "string"},
-                                                        "description": {"type": "string"}
+                                                        "company": {"type": "Daily Planet"},
+                                                        "position": {"type": "Journalist"},
+                                                        "period": {"type": "Late 20s–now"},
+                                                        "description": {"type": "Wears glasses, writes arcticles, saves the world"}
                                                     }
                                                 }
                                             }
@@ -114,10 +114,11 @@
                     },
                     "/education.json": {
                         "get": {
-                            "summary": "Образование",
+                            "summary": "Education",
+                            "description": "Get education",
                             "responses": {
                                 "200": {
-                                    "description": "Успешный ответ",
+                                    "description": "Ok",
                                     "content": {
                                         "application/json": {
                                             "schema": {
@@ -125,10 +126,10 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "university": {"type": "string"},
-                                                        "faculty": {"type": "string"},
-                                                        "degree": {"type": "string"},
-                                                        "period": {"type": "string"}
+                                                        "university": {"type": "Kryptonopolis University"},
+                                                        "faculty": {"type": "How to be a Superman"},
+                                                        "degree": {"type": "Master's degree"},
+                                                        "period": {"type": "Unknown"}
                                                     }
                                                 }
                                             }
@@ -151,8 +152,8 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "language": {"type": "string"},
-                                                        "level": {"type": "string"}
+                                                        "language": {"type": "Kryptonian"},
+                                                        "level": {"type": "Native speaker"}
                                                     }
                                                 }
                                             }
