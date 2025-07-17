@@ -1,59 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Igor Nalobin, System analyst</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CV API</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui.min.css">
     <style>
-        body { margin: 0; padding: 20px; background: #fafafa; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { color: #333; }
-        .swagger-ui .opblock-summary-path { max-width: 600px; }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #fafafa;
+        }
+        .topbar {
+            display: none;
+        }
+        .information-container {
+            background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .title {
+            color: white !important;
+            font-size: 2.5rem !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin: 0 !important;
+        }
+        .description {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: 1.2rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        .swagger-ui .opblock-summary-path {
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>API CV</h1>
-        <p>System analyst, Tyumen | <a href="https://t.me/IngVarrr" target="_blank">@https://t.me/IngVarrr</a></p>
-    </div>
-    
     <div id="swagger-ui"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui-standalone-preset.min.js"></script>
     <script>
         window.onload = function() {
-            // Конфигурация спецификации
+            // Конфигурация спецификации с вашими данными
             const spec = {
                 "openapi": "3.0.0",
                 "info": {
-                    "title": "API CV",
-                    "version": "1.0.3",
-                    "description": "API with professional information"
+                    "title": "CV API",
+                    "version": "1.0.0",
+                    "description": "API for accessing Superman's professional information"
                 },
                 "servers": [
                     {
                         "url": "https://raw.githubusercontent.com/igor-nalobin/igor-nalobin/main/data",
-                        "description": "main server"
+                        "description": "Primary data server"
                     }
                 ],
                 "paths": {
-                    "/about.json": {
+                    "/about": {
                         "get": {
-                            "summary": "Main information",
-                            "description": "Get personal and contact information",
+                            "summary": "Personal information",
+                            "description": "Get personal and contact details",
                             "responses": {
                                 "200": {
-                                    "description": "Ok",
+                                    "description": "Successful response",
                                     "content": {
                                         "application/json": {
                                             "schema": {
                                                 "type": "object",
                                                 "properties": {
                                                     "name": {"type": "string", "example": "Clark Kent"},
-                                                    "profession": {"type": "string", "example": "Journalist"},
-                                                    "email": {"type": "string", "example": "sups@krypt.on"},
+                                                    "profession": {"type": "string", "example": "Superhero"},
+                                                    "email": {"type": "string", "example": "superman@justiceleague.org"},
                                                     "location": {"type": "string", "example": "Metropolis"}
                                                 }
+                                            },
+                                            "example": {
+                                                "name": "Clark Kent",
+                                                "profession": "Superhero",
+                                                "email": "superman@justiceleague.org",
+                                                "location": "Metropolis"
                                             }
                                         }
                                     }
@@ -61,37 +109,39 @@
                             }
                         }
                     },
-                    "/skills.json": {
+                    "/skills": {
                         "get": {
-                            "summary": "Professional skills",
-                            "description": "Get a list of professional skills",
+                            "summary": "Superpowers",
+                            "description": "Get list of superpowers",
                             "responses": {
                                 "200": {
-                                    "description": "Ok",
+                                    "description": "Successful response",
                                     "content": {
                                         "application/json": {
                                             "schema": {
                                                 "type": "array",
-                                                "items": {"type": "string"},
-                                                "example": [
-                                                    "Flight",
-                                                    "X-ray vision",
-                                                    "Superhuman strength"
-                                                ]
-                                            }
+                                                "items": {"type": "string"}
+                                            },
+                                            "example": [
+                                                "Flight",
+                                                "Super strength",
+                                                "Heat vision",
+                                                "X-ray vision",
+                                                "Freeze breath"
+                                            ]
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "/experience.json": {
+                    "/experience": {
                         "get": {
-                            "summary": "Experience",
-                            "description": "Get experience",
+                            "summary": "Work experience",
+                            "description": "Get professional work history",
                             "responses": {
                                 "200": {
-                                    "description": "Ok",
+                                    "description": "Successful response",
                                     "content": {
                                         "application/json": {
                                             "schema": {
@@ -99,26 +149,40 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "company": {"string": "Daily Planet"},
-                                                        "position": {"string": "Journalist"},
-                                                        "period": {"string": "Late 20s–now"},
-                                                        "description": {"string": "Wears glasses, writes arcticles, saves the world"}
+                                                        "company": {"type": "string"},
+                                                        "position": {"type": "string"},
+                                                        "period": {"type": "string"},
+                                                        "description": {"type": "string"}
                                                     }
                                                 }
-                                            }
+                                            },
+                                            "example": [
+                                                {
+                                                    "company": "Justice League",
+                                                    "position": "Founding Member",
+                                                    "period": "2011 — Present",
+                                                    "description": "Leading team of superheroes in protecting Earth from various threats"
+                                                },
+                                                {
+                                                    "company": "Daily Planet",
+                                                    "position": "Reporter",
+                                                    "period": "2005 — Present",
+                                                    "description": "Investigative journalism, covering major events in Metropolis"
+                                                }
+                                            ]
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "/education.json": {
+                    "/education": {
                         "get": {
                             "summary": "Education",
-                            "description": "Get education",
+                            "description": "Get educational background",
                             "responses": {
                                 "200": {
-                                    "description": "Ok",
+                                    "description": "Successful response",
                                     "content": {
                                         "application/json": {
                                             "schema": {
@@ -126,25 +190,40 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "university": {"string": "Kryptonopolis University"},
-                                                        "faculty": {"string": "How to be a Superman"},
-                                                        "degree": {"string": "Master's degree"},
-                                                        "period": {"string": "Unknown"}
+                                                        "university": {"type": "string"},
+                                                        "faculty": {"type": "string"},
+                                                        "degree": {"type": "string"},
+                                                        "period": {"type": "string"}
                                                     }
                                                 }
-                                            }
+                                            },
+                                            "example": [
+                                                {
+                                                    "university": "Fortress of Solitude",
+                                                    "faculty": "Kryptonian Studies",
+                                                    "degree": "Master of Alien Technology",
+                                                    "period": "1998 — 2005"
+                                                },
+                                                {
+                                                    "university": "Smallville High School",
+                                                    "faculty": "Human Studies",
+                                                    "degree": "High School Diploma",
+                                                    "period": "1994 — 1998"
+                                                }
+                                            ]
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "/languages.json": {
+                    "/languages": {
                         "get": {
                             "summary": "Languages",
+                            "description": "Get language proficiencies",
                             "responses": {
                                 "200": {
-                                    "description": "Ok",
+                                    "description": "Successful response",
                                     "content": {
                                         "application/json": {
                                             "schema": {
@@ -152,11 +231,55 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "language": {"string": "Kryptonian"},
-                                                        "level": {"string": "Native speaker"}
+                                                        "language": {"type": "string"},
+                                                        "level": {"type": "string"}
                                                     }
                                                 }
-                                            }
+                                            },
+                                            "example": [
+                                                {"language": "Kryptonese", "level": "Native"},
+                                                {"language": "English", "level": "Fluent"},
+                                                {"language": "Interlac", "level": "Conversational"}
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "/projects": {
+                        "get": {
+                            "summary": "Notable achievements",
+                            "description": "Get significant accomplishments",
+                            "responses": {
+                                "200": {
+                                    "description": "Successful response",
+                                    "content": {
+                                        "application/json": {
+                                            "schema": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {"type": "string"},
+                                                        "description": {"type": "string"}
+                                                    }
+                                                }
+                                            },
+                                            "example": [
+                                                {
+                                                    "name": "Defeated General Zod",
+                                                    "description": "Protected Earth from Kryptonian invasion"
+                                                },
+                                                {
+                                                    "name": "Stopped Doomsday",
+                                                    "description": "Saved Metropolis from destruction"
+                                                },
+                                                {
+                                                    "name": "Reversed Earth's rotation",
+                                                    "description": "Turned back time to save Lois Lane"
+                                                }
+                                            ]
                                         }
                                     }
                                 }
@@ -176,16 +299,21 @@
                 ],
                 layout: "StandaloneLayout",
                 requestInterceptor: (request) => {
-                    // Добавляем заголовки для обхода CORS
-                    request.headers.Origin = window.location.origin;
-                    request.headers.Referer = window.location.href;
-                    
-                    // Добавляем параметр для избежания кэширования
-                    if (request.url.includes('raw.githubusercontent.com')) {
+                    // Добавляем .json к URL перед отправкой запроса
+                    if (request.url.startsWith('https://raw.githubusercontent.com/igor-nalobin/igor-nalobin')) {
+                        // Добавляем .json к пути
+                        if (!request.url.endsWith('.json')) {
+                            request.url = request.url + '.json';
+                        }
+                        
+                        // Добавляем параметр для избежания кэширования
                         const separator = request.url.includes('?') ? '&' : '?';
                         request.url += `${separator}nocache=${Date.now()}`;
+                        
+                        // Добавляем заголовки для CORS
+                        request.headers.Origin = window.location.origin;
+                        request.headers.Referer = window.location.href;
                     }
-                    
                     return request;
                 },
                 responseInterceptor: (response) => {
@@ -194,7 +322,7 @@
                         try {
                             response.body = JSON.parse(response.body);
                         } catch (e) {
-                            console.error('Error parsing JSON response', e);
+                            console.error('JSON parsing error', e);
                         }
                     }
                     return response;
